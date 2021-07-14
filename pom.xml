@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>au.gov.aims</groupId>
+    <artifactId>netcdf-generator</artifactId>
+    <version>0.2</version>
+    <packaging>jar</packaging>
+    <description>This project was created to produce very small NetCDF files,
+        to be used in unit tests of projects like NcAnimate,
+        without increasing the project size considerably.</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <netcdfVersion>5.0.0-alpha3</netcdfVersion>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>github_openaims</id>
+            <name>GitHub Open-AIMS repo</name>
+            <url>https://maven.pkg.github.com/open-AIMS/*</url>
+        </repository>
+
+        <!-- AIMS ks maven mirror repository on GitHub -->
+        <repository>
+            <id>aims-ks.mvn-repo</id>
+            <name>AIMS Knowledge System MVN Repo</name>
+            <url>https://raw.githubusercontent.com/aims-ks/mvn-repo/master/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>edu.ucar</groupId>
+            <artifactId>cdm</artifactId>
+            <version>${netcdfVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.ucar</groupId>
+            <artifactId>netcdf4</artifactId>
+            <version>${netcdfVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <!-- Used for JUnit tests - Not included in the war -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub AIMS-KS Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/open-aims/netcdf-generator</url>
+        </repository>
+    </distributionManagement>
+</project>

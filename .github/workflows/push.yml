@@ -1,0 +1,29 @@
+# Workflow executed on "push" events.
+name: push
+
+on: push
+
+jobs:
+
+  # Run tests in Maven.
+  test:
+    runs-on: ubuntu-latest
+
+    container:
+      image: maven:3-jdk-8-slim
+
+    steps:
+
+      # Retrieve the code from Github.
+      # Use branch "v2" of the "checkout" plugin
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y libnetcdf-c++4
+
+      - name: Execute tests with Maven.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -B --settings settings.xml clean test
