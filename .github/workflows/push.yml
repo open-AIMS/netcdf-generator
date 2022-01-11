@@ -26,4 +26,4 @@ jobs:
       - name: Execute tests with Maven.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn -B --settings settings.xml clean test
+        run: mvn -B --settings maven-settings.xml clean test
